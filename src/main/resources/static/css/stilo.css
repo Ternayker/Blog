@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+body {
+	background: #fff;
+}
+
+.cabecario{
+	border-radius: 5%;
+	background-color: rgba(100,100,100,0.5);
+    height: 150px;
+	margin: 0px 10% 5px 10%;
+	display: flex;
+	flex-direction: row;
+	
+}
+
+.logo{
+	width: 80px;
+	margin: 5px 10px 5px 10px;
+	align-self: flex-start;
+	
+}
+
+.titulo{
+	text-decoration: none;
+	align-self: center;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+	<head>
+	
+		<meta charset="UTF-8">
+		<title>MySafetyBlogbr</title>
+		<!-- CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+		<!-- Import Google Icon Font -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+		<!--<link rel="stylesheet" href="style/styleCss.css"/>-->
+
+	    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+	    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
+	</head>
+	
+	<body>
+	
+		<header>
+		
+			<!-- Cabeçario -->
+			<nav class="navbar navbar-light bg-light">
+			    <span class="navbar-brand mb-0 h1" style="font-weight: bold;" >MySafetyBlog</span>
+			</nav>
+			
+		</header>
+		
+		<section>
+		
+			<div class="container" style="width:60%; padding-bottom: 30px ">
+			
+				<nav aria-label="breadcrumb">
+		            <div class="btn-group" role="group" aria-label="Basic outlined example" style="margin: 15px 0px 15px 0px">
+		                <a href="/posts" type="button" class="btn btn-outline-info">Posts</a>
+		                <button type="button" class="btn btn-outline-dark">Novo Post</button>
+		            </div>
+        		</nav>
+			
+				<div>
+					<th:block th:include="msgValidacao"></th:block>
+					<form method="post">
+		                <div class="form-group">
+		                    <input type="text" class="form-control" style="margin-bottom: 10px" name="titulo" placeholder="Título *">
+		                </div>
+		                
+		                <div class="form-group">
+		                    <input type="text" class="form-control" style="margin-bottom: 10px"  name="autor" placeholder="Autor *">
+		                </div>
+		
+		                <textarea id="summernote" type="text" class="form-control" name="texto" placeholder="Texto *"></textarea>
+		
+		                <small class="form-text text-muted">(*) Campos obrigatórios</small>
+		
+		                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Publicar</button>
+		                <a href="/posts" class="btn btn-light" role="button" style="margin-top: 10px;">Cancelar</a>
+		                <!--<button type="submit" class="btn" style="margin-top: 10px;">Cancelar</button>-->
+		            </form>
+				</div>
+	
+			</div>
+		
+		</section>
+		<script>
+		    $('#summernote').summernote({
+		        placeholder: 'Texto *',
+		        tabsize: 2,
+		        height: 300
+		    });
+		</script>
+	</body>
+	
+</html>

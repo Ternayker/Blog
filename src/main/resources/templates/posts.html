@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+	<head>
+	
+		<meta charset="UTF-8">
+		<title>MySafetyBlogbr</title>
+		<!-- CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+		<!-- Import Google Icon Font -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+	</head>
+	
+	<body>
+	
+		<header>
+		
+			<!-- Cabeçario -->
+			<nav class="navbar bg-light">
+			    <a class="navbar-brand" href="/posts">
+			      MySafetyBlogbr
+			    </a>
+			    <a href="/newpost" class="btn btn-outline-primary" role="button" style="margin-right:  10px;">Novo Post</a>
+			  
+			</nav>
+			
+		</header>
+		
+		<section>
+		
+			<div class="container" style="width:70%; padding-bottom: 30px ">
+			
+				<nav aria-label="breadcrumb">
+		            <ol class="breadcrumb" style="background-color: white; padding-left: 0px;">
+		                <li class="breadcrumb-item active" aria-current="page"><button type="button" class="btn btn-outline-dark">Posts</button></li>
+		            </ol>
+        		</nav>
+        		
+				
+				<div class="row row-cols-2">
+		    			<div class="col">
+		    				<div class="card shadow-sm bg-white rounded" style="margin-top: 20px" th:each="post : ${posts}">
+		    				<div class="card-body">
+								<p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem">
+					               <span th:text="${post.autor}"></span>
+					               <span th:text="${post.data}"></span>
+					               
+					               <a class="btn btn-outline-danger"  style="position: absolute;left: 80%;padding: 4px;" role="button" th:href="@{deletpost/{id}(id=${post.id})}">Delet Post</a>
+					               
+					           </p>
+						           <h4 class="card-title"><a style="text-decoration:none;" th:href="${(#mvc.url('SC#getPostDataile').arg(0, post.id)).build()}"><span  style="font-weight: bold; color: black; padding-top: 5px;" th:text="${post.titulo}" ></span></a></h4>
+					               <p class="card-text"> <span th:utext="${#strings.abbreviate(post.texto,400)}"></span></p>
+					                <!--<a th:href="${(#mvc.url('BC#getPostDetails').arg(0, post.id)).build()}" class="card-link">Acessar</a>-->
+								
+							</div>
+								
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		
+		</section>
+		
+	</body>
+	
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+	<head>
+	
+		<meta charset="UTF-8">
+		<title>MySafetyBlogbr</title>
+		<!-- CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	</head>
+	
+	<body>
+	
+		<header>
+		
+			<!-- Cabeçario -->
+			<nav class="navbar navbar-light bg-light">
+			    <span class="navbar-brand mb-0 h1" style="font-weight: bold;" >MySafetyBlog</span>
+			    <a href="/newpost" class="btn btn-outline-primary" role="button" style="margin-right:  10px;">Novo Post</a>
+			</nav>
+			
+		</header>
+		
+		<main>
+		
+			<div class="container" style="width:60%; padding-bottom: 30px ">
+			
+				<nav aria-label="breadcrumb">
+		            <div class="btn-group" role="group" aria-label="Basic outlined example" style="margin: 15px 0px 15px 0px">
+		                <a href="/posts" type="button" class="btn btn-outline-info">Posts</a>
+		                <button type="button" class="btn btn-outline-dark">Post</button>
+		            </div>
+        		</nav>
+			
+				<article>
+            <h1 class="card-title" style="font-weight: bold; margin-bottom: 20px;"><span th:text="${post.titulo}"></span></h1>
+           
+            <p class="card-subtitle mb-2 text-muted">
+                <i class="material-icons">person_outline</i>
+                <span th:text="${post.autor}"></span>
+                <br>
+                <i class="material-icons">date_range</i>
+                <span th:text="${post.data}"></span>
+            </p>
+            
+            <section>
+                <p class="card-text" style="margin-top: 40px;"><span th:utext="${post.texto}"></span></p>
+            </section>
+            
+        </article>
+				
+			</div>
+		
+		</main>
+		
+	</body>
+	
+</html>
