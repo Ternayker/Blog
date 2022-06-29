@@ -13,20 +13,23 @@
 	
 	<body>
 	
+		<!-- Cabeçario -->
 		<header>
 		
-			<!-- Cabeçario -->
 			<nav class="navbar bg-light">
-			    <a class="navbar-brand" href="/posts" style="margin-left: 10px;">MySafetyBlogbr</a>
-			    <a href="/adminposts" class="btn btn-outline-primary" role="button" style="margin-right:  10px;">Admin</a>
+				<a class="navbar-brand" href="/posts" style="margin-left: 10px;">MySafetyBlogbr</a>
+			    <a href="/newpost" class="btn btn-outline-primary" role="button" style="margin-right:  10px;">Novo Post</a>
 			</nav>
 			
 		</header>
 		
+		
+		<!-- Corpo do site -->
 		<section>
 		
 			<div class="container" style="width:70%; padding-bottom: 30px ">
-			
+				
+				<!-- link para vltar para a pagina anterior -->
 				<nav aria-label="breadcrumb">
 		            <ol class="breadcrumb" style="background-color: white; padding-left: 0px;">
 		                <li class="breadcrumb-item active" aria-current="page">
@@ -35,19 +38,25 @@
 		            </ol>
         		</nav>
         		
-				
 				<div class="row row-cols-2">
-		    		<div class="col">
-		    			<div class="card shadow-sm bg-white rounded" style="margin-top: 20px" th:each="post : ${posts}">
+		    			<div class="col">
+		    				<div class="card shadow-sm bg-white rounded" style="margin-top: 20px" th:each="post : ${adminposts}">
 		    				<div class="card-body">
 		    				
+		    					<!-- Botões de Deleta e Editar um Post -->
+					               <nav aria-label="breadcrumb">
+							            <div class="btn-group" role="group" aria-label="Basic outlined example" style="margin: 15px 0px 15px 0px">
+							                <a class="btn btn-outline-primary"  style="font-size: 12px;" role="button" th:href="@{editapost/{id}(id=${post.id})}">Edita Post</a>
+										    <a class="btn btn-outline-danger"  style="font-size: 12px;" role="button" th:href="@{editapost/{id}(id=${post.id})}">Delet Post</a>
+							            </div>
+					        		</nav>
+					        		
 								<p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem">
 					               <span th:text="${post.autor}"></span>
-					               <span th:text="${post.data}"></span>  
+					               <span th:text="${post.data}"></span> 
 					           </p>
 						           <h4 class="card-title"><a style="text-decoration:none;" th:href="${(#mvc.url('SC#getPostDataile').arg(0, post.id)).build()}"><span  style="font-weight: bold; color: black; padding-top: 5px;" th:text="${post.titulo}" ></span></a></h4>
 					               <p class="card-text"> <span th:utext="${#strings.abbreviate(post.texto,400)}"></span></p>
-					                <!--<a th:href="${(#mvc.url('BC#getPostDetails').arg(0, post.id)).build()}" class="card-link">Acessar</a>-->
 								
 							</div>
 								

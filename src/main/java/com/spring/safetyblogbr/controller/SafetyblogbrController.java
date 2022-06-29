@@ -3,6 +3,7 @@ package com.spring.safetyblogbr.controller;
 import java.time.LocalDate;
 import java.util.List;
 
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,12 +32,24 @@ public class SafetyblogbrController {
 		return mv;
 	}
 	
+	
 	@RequestMapping(value = "/posts/{id}", method = RequestMethod.GET)
 	public ModelAndView getPostDataile(@PathVariable("id") long id) {
 			ModelAndView mv = new ModelAndView("postDetails");
 			Post post = safetyblogbrService.findById(id);
 			mv.addObject("post",post);
 			return mv;
+	}
+	
+	
+	//Funções do ADMIN
+	
+	@RequestMapping(value = "/adminposts", method = RequestMethod.GET)
+	public ModelAndView getAdminPost() {
+		ModelAndView mv = new ModelAndView("adminposts");
+		List<Post> posts = safetyblogbrService.fidAll();
+		mv.addObject("adminposts",posts);
+		return mv;
 	}
 	
 	@RequestMapping(value = "/newpost", method = RequestMethod.GET)
@@ -52,7 +65,29 @@ public class SafetyblogbrController {
 		}
 		post.setData(LocalDate.now());
 		safetyblogbrService.save(post);
-		return "redirect:/posts";
+		return "redirect:/adminposts";
+	}
+	
+	@RequestMapping(value = "/editapost/{id}", method = RequestMethod.GET)
+	public ModelAndView getPostEdita(@PathVariable("id") long id) {
+		ModelAndView mv = new ModelAndView("PostEdita");
+		Post posts = safetyblogbrService.getReferenceById(id);
+		mv.addObject("adminposts",posts);
+		return mv;
+	}
+	
+	@RequestMapping(value = "/editapost", method = RequestMethod.POST)
+	public ModelAndView editaPost(@Valid Post post, BindingResult result, RedirectAttributes attributes) {
+		ModelAndView mv = new ModelAndView();
+		if(result.hasErrors()) {
+			attributes.addFlashAttribute("mensagem","verifique se os campos obrigatorios foram preenchidos");
+			mv.setViewName("redirect:/editapost");
+			return mv;
+		}
+		post.setData(LocalDate.now());
+		safetyblogbrService.save(post);
+		mv.setViewName("redirect:/adminposts");
+		return mv;
 	}
 	
 	
@@ -61,7 +96,6 @@ public class SafetyblogbrController {
 		safetyblogbrService.deleteById(id);
 		return "redirect:/posts";
 	}
-	
 
 }
 

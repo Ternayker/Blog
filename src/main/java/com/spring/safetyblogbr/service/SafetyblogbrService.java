@@ -10,5 +10,5 @@ public interface SafetyblogbrService {
 	Post findById(long id);
 	Post save(Post post);
 	void deleteById(long  id);
-	
+	Post getReferenceById(long id);
 }

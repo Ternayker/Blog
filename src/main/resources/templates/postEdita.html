@@ -33,38 +33,41 @@
 		
 			<div class="container" style="width:60%; padding-bottom: 30px ">
 			
-				<!-- link para vltar para a pagina anterior -->
 				<nav aria-label="breadcrumb">
 		            <div class="btn-group" role="group" aria-label="Basic outlined example" style="margin: 15px 0px 15px 0px">
 		                <a href="/adminposts" type="button" class="btn btn-outline-info">Posts</a>
-		                <button type="button" class="btn btn-outline-dark">Novo Post</button>
+		                <button type="button" class="btn btn-outline-dark">Edita Post</button>
 		            </div>
         		</nav>
 			
 				<div>
 					<th:block th:include="msgValidacao"></th:block>
-					<form method="post">
+					
+					<form method="post" action="/editapost" th:object="${adminposts}">
+					
+						<input type="hidden" th:field="*{id}">
+						
 		                <div class="form-group">
-		                    <input type="text" class="form-control" style="margin-bottom: 10px" name="titulo" placeholder="Título *">
+		                    <input type="text"   th:field="*{titulo}" class="form-control" style="margin-bottom: 10px" name="titulo">
 		                </div>
 		                
 		                <div class="form-group">
-		                    <input type="text" class="form-control" style="margin-bottom: 10px"  name="autor" placeholder="Autor *">
+		                    <input type="text" th:field="*{autor}" class="form-control" style="margin-bottom: 10px"  name="autor">
 		                </div>
 		
-		                <textarea id="summernote" type="text" class="form-control" name="texto" placeholder="Texto *"></textarea>
+		                <textarea id="summernote" th:field="*{texto}" class="form-control" name="texto" placeholder="Texto *"></textarea>
 		
 		                <small class="form-text text-muted">(*) Campos obrigatórios</small>
 		
-		                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Publicar</button>
-		                <a href="/posts" class="btn btn-light" role="button" style="margin-top: 10px;">Cancelar</a>
+		                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Editar</button>
+		                <a href="/posts" class="btn btn-danger" role="button" style="margin-top: 10px;">Cancelar</a>
+		            
 		            </form>
 				</div>
 	
 			</div>
 		
 		</section>
-		<!-- Implementa o bloco de escrita de texto do google -->
 		<script>
 		    $('#summernote').summernote({
 		        placeholder: 'Texto *',

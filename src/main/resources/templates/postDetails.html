@@ -2,7 +2,6 @@
 <html xmlns:th="http://thymeleaf.org">
 
 	<head>
-	
 		<meta charset="UTF-8">
 		<title>MySafetyBlogbr</title>
 		<!-- CSS -->
@@ -14,9 +13,8 @@
 		<header>
 		
 			<!-- Cabeçario -->
-			<nav class="navbar navbar-light bg-light">
-			    <span class="navbar-brand mb-0 h1" style="font-weight: bold;" >MySafetyBlog</span>
-			    <a href="/newpost" class="btn btn-outline-primary" role="button" style="margin-right:  10px;">Novo Post</a>
+			<nav class="navbar bg-light">
+			    <a class="navbar-brand" href="/posts" style="margin-left: 10px;">MySafetyBlogbr</a>
 			</nav>
 			
 		</header>
@@ -33,21 +31,21 @@
         		</nav>
 			
 				<article>
-            <h1 class="card-title" style="font-weight: bold; margin-bottom: 20px;"><span th:text="${post.titulo}"></span></h1>
-           
-            <p class="card-subtitle mb-2 text-muted">
-                <i class="material-icons">person_outline</i>
-                <span th:text="${post.autor}"></span>
-                <br>
-                <i class="material-icons">date_range</i>
-                <span th:text="${post.data}"></span>
-            </p>
+		            <h1 class="card-title" style="font-weight: bold; margin-bottom: 20px;"><span th:text="${post.titulo}"></span></h1>
+		           
+		            <p class="card-subtitle mb-2 text-muted">
+		               <!-- <i class="bi bi-person-fill"></i> -->
+		                <span th:text="${post.autor}"></span>
+		                <br>
+		               <!-- <i class="bi bi-calendar3">date_range</i> -->
+		                <span th:text="${post.data}"></span>
+		            </p>
+		            
+		            <section>
+		                <p class="card-text" style="margin-top: 40px;"><span th:utext="${post.texto}"></span></p>
+		            </section>
             
-            <section>
-                <p class="card-text" style="margin-top: 40px;"><span th:utext="${post.texto}"></span></p>
-            </section>
-            
-        </article>
+       		 	</article>
 				
 			</div>
 		

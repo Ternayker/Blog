@@ -33,7 +33,9 @@ public class SafetyblogbrServiceImpl implements SafetyblogbrService{
 		safetyblogbrRepository.deleteById(id);
 	}
 
-
-
+	@Override
+	public Post getReferenceById(long id) {
+		return safetyblogbrRepository.getReferenceById(id);
+	}
 
 }
