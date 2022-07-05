@@ -38,9 +38,8 @@
 		            </ol>
         		</nav>
         		
-				<div class="row row-cols-2">
-		    			<div class="col">
-		    				<div class="card shadow-sm bg-white rounded" style="margin-top: 20px" th:each="post : ${adminposts}">
+				<div style=" width: 100%; display: flex; flex-wrap: wrap-reverse;">
+		    				<div class="card shadow-sm bg-white rounded" style="width: 40%;margin: 20px 10px" th:each="post : ${adminposts}">
 		    				<div class="card-body">
 		    				
 		    					<!-- Botões de Deleta e Editar um Post -->
@@ -53,17 +52,15 @@
 					        		
 								<p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem">
 					               <span th:text="${post.autor}"></span>
-					               <span th:text="${post.data}"></span> 
+					               <span th:text="${post.data}"></span><br> 
+					               Id: <span th:text="${post.id}"></span>
 					           </p>
 						           <h4 class="card-title"><a style="text-decoration:none;" th:href="${(#mvc.url('SC#getPostDataile').arg(0, post.id)).build()}"><span  style="font-weight: bold; color: black; padding-top: 5px;" th:text="${post.titulo}" ></span></a></h4>
 					               <p class="card-text"> <span th:utext="${#strings.abbreviate(post.texto,400)}"></span></p>
 								
 							</div>
-								
-						</div>
+							</div>
 					</div>
-					
-				</div>
 			</div>
 		
 		</section>
